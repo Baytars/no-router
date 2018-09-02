@@ -270,6 +270,12 @@
         },
         "诺贝尔": {
             "faction": "CD"
+        },
+        "Otto Frank": {
+            "faction": "Cells"
+        },
+        "Ernest Henry Starling": {
+            "faction": "Cells"
         }
     },
     "activity": {
