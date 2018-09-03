@@ -1,0 +1,179 @@
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="author" content="Baytars">
+    <title>SoMe</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/some.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/some.css" />
+</head>
+
+<body>
+    <div class="side">
+        <nav>
+            <a onclick="some.form('#game_control')">
+                <img src="img/settings.jpg">
+                <span>
+                    系统
+                </span>
+            </a>
+            <a onclick="some.form('#game_frame')">
+                <img src="img/home.jpg">
+                <span>
+                    角色
+                </span>
+            </a>
+            <a onclick="some.form('#game_item')">
+                <img src="img/item.jpg">
+                <span>
+                    物品
+                </span>
+            </a>
+            <a onclick="some.form('#game_synthesis')">
+                <img src="img/synthesis.jpg">
+                <span>
+                    合成
+                </span>
+            </a>
+            <a>
+                <img src="img/vs.jpg" onclick="some.form('#game_vs')">
+                <span>
+                    巅峰对决
+                </span>
+            </a>
+            <a>
+                <img src="img/friends.jpg">
+                <span>
+                    朋友
+                </span>
+            </a>
+        </nav>
+    </div>
+    <div class="main">
+        <div id="game_control" class="module">
+            <p>
+                <a href="#">
+                    <input type="file" value="读取进度" id="load_data" onchange="some.load(this.id)" />
+                </a>
+            </p>
+            <p>
+                <a id="test" onclick="some.save(this)" download="data.json" href="#">
+                    <button>保存进度</button>
+                </a>
+            </p>
+            <p>
+                <audio controls="controls">
+                    <source src="./sounds/Egypt.mp3" type="audio/mpeg" /> 您的浏览器不支持 audio 标签。
+                </audio>
+            </p>
+            <p>
+                作弊面板：
+                <br>
+                <button onclick="some.gain.experience(200)">加200经验</button>
+                <button onclick="some.control.progress=false">暂停</button>
+                <button onclick="some.control.progress=true">开始</button>
+                <button onclick="some.mine()">挖矿</button>
+
+            </p>
+        </div>
+        <div id="game_frame" class="module">
+            <p>请读取存档文件</p>
+        </div>
+        <div id="game_item" class="module">
+            <p>物品栏</p>
+            <ul id="item_list">
+
+            </ul>
+        </div>
+        <div id="game_synthesis" class="module">
+            <p>合成</p>
+            <select id="synthesis">
+
+            </select>
+            <button onclick="some.react()">开始反应</button>
+        </div>
+        <div class="module" id="game_vs" style="width: 1024px; height: 768px;">
+            <p>
+                选择你的对手
+                <select id="vs">
+
+                </select>
+                <button onclick="some.fight('selected')">
+                    开始对战
+                </button>
+            </p>
+            <div id='ally' style='width:300px;display:inline-block;margin-left:50px;margin-top:50px;border:2px solid black;border-radius:20px;padding:20px;background-color:#7b7b7b;color:white;'>
+                <label>我方：</label>
+                <span id='aname'>？</span>
+                <br />
+                <label>温度：</label>
+                <span id='atemp'>0</span>
+                <label>°C</label>
+                <br />
+                <label>熔点：</label>
+                <span id='amp'>0</span>
+                <label>°C</label>
+                <br />
+                <label>生命：</label>
+                <span id='aheal'>0</span>
+                <label>°C</label>
+            </div>
+            <div style='float:right;'>
+                <div id='enemy' style='width:300px;display:inline-block;margin-right:50px;margin-top:50px;border:2px solid black;border-radius:20px;padding:20px;background-color:#7b7b7b;color:white;'>
+                    <label>敌方：</label>
+                    <span id='bname'>？</span>
+                    <br />
+                    <label>温度：</label>
+                    <span id='btemp'>0</span>
+                    <label>°C</label>
+                    <br />
+                    <label>熔点：</label>
+                    <span id='bmp'>0</span>
+                    <label>°C</label>
+                    <br />
+                    <label>生命：</label>
+                    <span id='bheal'>0</span>
+                    <label>°C</label>
+                </div>
+            </div>
+            <div style='clear:both;'></div>
+
+            <div id='pic' style='text-align:center;'>
+                <img id='apic' src='img/PubChem/1.jpg' style='margin:50px 200px 0 0;' />
+                <img id='bpic' src='img/PubChem/1.jpg' style='margin:50px 0 0 200px;' />
+            </div>
+
+            <div id="skl" style="margin:50px;text-align:center;">
+                <button onclick="rep(this.innerText,1)">Zip反应</button>
+                <button onclick="rep(this.innerText,4)">von Braun反应</button>
+                <button onclick="rep(this.innerText,9)">Meyers合成</button>
+                <button onclick="rep(this.innerText,9)">Krapcho反应</button>
+                <script type="text/javascript">
+                    function rep(sklname, harm) {
+                        t = txt.innerHTML;
+                        txt.innerHTML = "<p>" + aname.innerText + "对" + bname.innerText + "施放" + sklname + "，造成" + harm +
+                            "°C温度下降</p>" + t;
+                        btemp.innerText = Number(btemp.innerText) - harm;
+                        bheal.innerText = Number(btemp.innerText) - Number(bmp.innerText);
+
+                        // 判定死亡
+                        if (Number(btemp.innerText) <= Number(bmp.innerText)) {
+                            t = txt.innerHTML;
+                            txt.innerHTML = "<p>" + bname.innerText + "当前状态为固态，行动不能</p>" + t;
+                        }
+                    }
+                </script>
+            </div>
+
+            <div id="msg" style="border:1px solid;text-align:center;height:300px;">
+                <p>
+                    <h2>系统消息</h2>
+                </p>
+                <div id="txt" style="text-align:left;height:200px;overflow:auto;">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Organic Chemistry</title>
+
+    <script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/some.js" type="text/javascript" charset="utf-8"></script>
+	<link rel="stylesheet" type="text/css" href="css/sqb.css"/>
+</head>
+
+<body>
+    <h1>
+        <p>Organic Chemistry（原文件：Organic Chemistry 第六版 - 加料批处理.html）</p>
+    </h1>
+    <label>随机抽题</label>
+    <a id="go" href="">
+        <input type="button" value="放马过来吧！" onClick="page.challenge()" />
+    </a>
+    <br/>
+    <a onclick="page.show('a')">1</a>
+
+    <a onclick="page.show('b')">2</a>
+
+    <a onclick="page.show('c')">3</a>
+
+    <div id="a" class="quiz">
+        <img src="img/间羟基苯甲酸.jpg" />
+        <br/>
+        <span> Identify the substance.</span>
+        <br/>
+    </div>
+
+    <div id="b" class="quiz">
+        <img src="img/酒石酸.gif" />
+        <br/>
+        <span> Identify the substance.</span>
+        <br/>
+    </div>
+
+    <div id="c" class="quiz">
+        <img src="img/没食子酸.jpg" />
+        <br/>
+        <span> Identify the substance.</span>
+        <br/>
+    </div>
+    <br/>
+    <hr />
+    <div class="g-align-c g-fs-14">
+        <p>
+            <h2>迭代函数研究室</h2>
+        </p>
+        <p>
+            <h3>迭代1（十进制值→53进制值→插乘值→十进制值→……）</h3>
+        </p>
+        <button onclick="page.exp()">输入十进制数后开始实验</button>
+    </div>
+    <hr />
+    <textarea id="sep" style="width:600px;height:600px;"></textarea>
+    <br />
+    <input type="button" value="split" onclick="page.analy($('#sep').val())" />
+    <br />
+    <span id="rise"></span>
+    <hr />
+    <div class="container clearfix">
+        <div class="sqb-left">
+            <p>
+                <h2>53进制测试端</h2>
+            </p>
+            <p>
+                <h3>十进制数</h3>
+            </p>
+            <input type="text" id="transform" onkeydown="page.enter()" />
+            <button onclick="page.out($('#transform').val().trim())">Show Value</button>
+            <p>
+                <h3>53进制数</h3>
+            </p>
+            <input type="text" id="fifth" onkeydown="page.etr()" />
+            <p>
+                <button onclick="page.wei()">Show Value</button>
+                <button onclick="page.move()">输出到待转化值</button>
+            </p>
+            <p>
+                <h3>待转化值</h3>
+            </p>
+            <input type="text" id="wait" onkeydown="page.enr()" />
+            <p>
+                <button onclick="page.shu()">计算插加值</button>
+                <button onclick="page.wu()">计算插乘值</button>
+            </p>
+            <p>
+                <h3>插加值</h3>
+            </p>
+            <input type="text" id="add" />
+            <button onclick="page.expo()">输出到十进制数</button>
+            <p>
+                <h3>插乘值</h3>
+            </p>
+            <input type="text" id="mul" />
+            <button onclick="page.expr()">输出到十进制数</button>
+            <br />
+            <br /> 静电力常数：9*10^9=uAFEiN
+            <br /> 阿伏伽德罗常数：6.02*10^23=wfvvwakQSV---u
+        </div>
+        <div class="sqb-right">
+            <p>
+                <h2>数值输出（请及时取走您的数值）</h2>
+            </p>
+            <table id="tb" border="1">
+                <tr>
+                    <th>
+                        单词
+                    </th>
+                    <th>
+                        插加值
+                    </th>
+                </tr>
+            </table>
+        </div>
+
+        <script>
+			var page = {
+				out: function(inpnum) {
+					$("#fifth").val(some.base.flow(inpnum));
+				},
+				enter: function() {
+					var keys = window.event.keyCode;
+					if (keys == 13) {
+						page.out($('#transform').val().trim());
+					}
+				},
+				etr: function() {
+					var keys = window.event.keyCode;
+					if (keys == 13) {
+						page.wei();
+					}
+				},
+				wei: function() {
+					$("#transform").val(some.base.ebb(0, $("#fifth").val().trim()));
+				},
+				enr: function() {
+					var keys = window.event.keyCode;
+					if (keys == 13) {
+						page.shu();
+						page.wu();
+					}
+				},
+				shu: function() {
+					$("#add").val(some.base.ebb(1, $("#wait").val().trim()));
+					var lef, rig, vio;
+					lef = $("#wait").val();
+					rig = $("#add").val();
+					vio = $("#tb").html();
+					$("#tb").html( vio + "<tr>" + "<td>" + lef + "</td>" + "<td>" + rig + "</td>" + "</tr>" );
+				},
+				wu: function() {
+					$("#mul").val(some.base.ebb(2, $("#wait").val().trim()));
+				},
+				move: function() {
+					$("#wait").val($("#fifth").val().trim());
+				},
+				expo: function() {
+					med = $("#add").val().trim();
+					$("#transform").val(med);
+				},
+				expr: function() {
+					mei = $("#mul").val().trim();
+					$("#transform").val(mei);
+				},
+				exp: function() {
+					some.base.iterate($("#transform").val().trim());
+				},
+				challenge: function() {
+					var idx = parseInt(1 + Math.random() * 4);
+					$("#go").attr('href', "org" + idx + ".html");
+					alert("接招！");
+				},
+				show: function(id) {
+					$('.quiz').hide();
+					$('#'+id).show();
+				},
+				analy: function(arise) {
+					myArray = arise.split(" ");
+					some.base.analy(arise);
+					for (i in myArray) {
+						$("#wait").val(myArray[i]);
+						page.shu();
+					}
+				}
+			}
+        </script>
+    </div>
+</body>
+
+</html>

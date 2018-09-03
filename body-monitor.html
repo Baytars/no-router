@@ -1,0 +1,29 @@
+<head>
+	<meta charset="utf-8" />
+	<title>
+		Body Monitor
+	</title>
+	<script src="js/vue.js">
+		
+	</script>
+</head>
+<body>
+	<div id="whole">
+		<div id="state">
+			<b v-for="(value, key) in ills" v-if="value">
+				{{ key }}
+			</b>
+		</div>
+		<div id="measure">
+			<p v-for="(value, key) in patient">
+				{{ key }}：{{ value }}
+			</p>
+		</div>
+		<div id="control">
+			
+		</div>
+	</div>
+	<script src="js/monitor.js">
+		
+	</script>
+</body>
