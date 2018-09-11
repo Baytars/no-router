@@ -113,12 +113,14 @@
     "neoplasm": {
         "嗜铬细胞瘤": {
             "en": "Pheochromocytoma",
+            "metastasis": {},
             "map": {
                 "肾上腺": {}
             }
         },
         "副神经节瘤": {
             "description": "肾上腺外嗜铬细胞瘤",
+            "metastasis": {},
             "map": {
                 "腹主动脉": {
                     "possibility": "约10％～15％"
