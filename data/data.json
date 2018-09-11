@@ -113,14 +113,20 @@
     "neoplasm": {
         "嗜铬细胞瘤": {
             "en": "Pheochromocytoma",
-            "metastasis": {},
+            "metastasis": {
+                "destination": {
+                    "骨": {},
+                    "肺": {},
+                    "肝脏": {}
+                }
+            },
             "map": {
                 "肾上腺": {}
             }
         },
         "副神经节瘤": {
+            "en": "paraganglioma",
             "description": "肾上腺外嗜铬细胞瘤",
-            "metastasis": {},
             "map": {
                 "腹主动脉": {
                     "possibility": "约10％～15％"
@@ -128,6 +134,7 @@
             }
         },
         "侵袭性葡萄胎": {
+            "malignancy": "benign",
             "metastasis": {
                 "血行转移": {
                     "destination": {
@@ -137,6 +144,7 @@
             }
         },
         "绒毛膜癌": {
+            "malignancy": "malign",
             "metastasis": {
                 "血行转移": {
                     "destination": {
